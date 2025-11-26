@@ -1,0 +1,64 @@
+/* Navbar.css */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #333;
+  padding: 1rem;
+  color: white;
+
+  .navbar-center {
+    .nav-links {
+    list-style: none;
+    display: flex;
+    }
+
+    .nav-links li {
+    margin-left: 1.5rem;
+    }
+
+    .nav-links a {
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem;
+    border-radius: 4px;
+    }
+
+    .nav-links a:hover {
+    background-color: #555;
+    }
+
+    /* Style for the active link */
+    .nav-links a.active {
+    background-color: #507eb1;
+    }
+  }
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-decoration: none;
+  color: white;
+}
+
+.demo__table {
+  margin-top: 40px;
+}
+.demo__table .ant-table-thead >tr >th {
+  background-color: #ffcc00;
+  text-align: left;
+  padding-left: 50px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.demo__table .ant-table-tbody >tr >td {
+  background-color: #e0d9d9;
+  text-align: left;
+  padding-left: 50px;
+  vertical-align: middle;
+  padding-bottom: 5px;
+  padding-top: 5px;
+}
+
+
