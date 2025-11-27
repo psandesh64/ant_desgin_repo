@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { blue, green } from '@ant-design/colors';
 import {
   CloudOutlined,
   // BarChartOutlined,
@@ -9,10 +10,11 @@ import {
   // UploadOutlined,
   // VideoCameraOutlined,
 } from '@ant-design/icons';
-import { Layout, Menu, theme } from 'antd';
+import { Button, ConfigProvider, Flex, Layout, Menu, Switch, theme } from 'antd';
 import { Link, Route, Routes } from 'react-router-dom';
-import MyContext from './contexts/myContext';
+import MyContext, { MyContextType } from './contexts/myContext';
 import DemoPage from './components/DemoPage';
+import { myToken } from './assets/token';
 
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -39,16 +41,65 @@ const App: React.FC = () => {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
   // eslint-disable-next-line
-  const [current,setCurrent] = useState(1)
+  const [primaryThemeColor,setPrimaryThemeColor] = useState<string | undefined>('#00b96b')
+  // const [algorithm,setAlgorithm] = useState<any>(theme.defaultAlgorithm)
+  const contextValue: MyContextType ={
+    primaryThemeColor,
+    setPrimaryThemeColor,
+  }
+  const obj = {
+    primaryThemeColor: primaryThemeColor,
+    // algorithm: 'theme.darkAlgorithm',
+    // algorithm: algorithm,
+  }
+
+  const onChange = (checked: boolean) => {
+    console.log(`switch to ${checked}`);
+    // console.log(algorithm)
+    // if (checked)
+    // setAlgorithm(theme.defaultAlgorithm)
+    // else setAlgorithm(theme.darkAlgorithm)
+  };
 
   return (
+    <MyContext.Provider
+      value={contextValue}
+    >
+    <ConfigProvider
+        theme={{
+          token: myToken(obj),
+          components: {
+            Button: {
+              // colorPrimary: '#00b96b',
+              algorithm: true, // Enable algorithm
+            },
+            Menu: {
+              // colorPrimary: '#00b96b',
+              algorithm: true, // Enable algorithm
+            },
+      }
+      }}>
     <Layout hasSider>
       <Sider style={siderStyle}>
         <div className="demo-logo-vertical" />
         <Menu theme="dark" mode="inline" defaultSelectedKeys={['4']} items={items} />
       </Sider>
       <Layout>
-        <Header style={{ padding: 0, background: colorBgContainer }} />
+        <Header style={{ padding: 0, background: colorBgContainer }} >
+          <Flex style={{padding: 10}} justify='flex-end' align='center' gap={'middle'}>
+            <Button onClick={()=>{
+              setPrimaryThemeColor(blue.primary)
+              }}>
+                Blue Theme
+            </Button>
+            <Button onClick={()=>{
+              setPrimaryThemeColor(green.primary)
+              }}>
+                Green Theme
+            </Button>
+            <Switch defaultChecked onChange={onChange} />
+          </Flex>
+        </Header>
         <Content style={{ margin: '24px 16px 0', overflow: 'initial' }}>
           <div
             style={{
@@ -58,15 +109,9 @@ const App: React.FC = () => {
               borderRadius: borderRadiusLG,
             }}
           >
-            <MyContext.Provider
-              value={{
-                current,
-              }}
-            >
-              <Routes>
-                <Route path="demo-page" element={<DemoPage/>} />
-              </Routes>
-            </MyContext.Provider>
+            <Routes>
+              <Route path="demo-page" element={<DemoPage/>} />
+            </Routes>
           </div>
         </Content>
         <Footer style={{ textAlign: 'center' }}>
@@ -74,6 +119,8 @@ const App: React.FC = () => {
         </Footer>
       </Layout>
     </Layout>
+    </ConfigProvider>
+            </MyContext.Provider>
   );
 };
 
