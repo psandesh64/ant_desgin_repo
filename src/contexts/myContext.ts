@@ -3,6 +3,8 @@ import { createContext, Dispatch, SetStateAction, useContext } from 'react';
 export type MyContextType = {
 	primaryThemeColor: string | undefined;
 	setPrimaryThemeColor: Dispatch<SetStateAction<string | undefined>>
+	dark: boolean;
+	setDark: Dispatch<SetStateAction<boolean>>
 };
 
 // Provide a safe default. Consumers should usually read from the Provider.

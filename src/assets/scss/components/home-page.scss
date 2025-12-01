@@ -1,0 +1,13 @@
+.home-page {
+    color: brown;
+}
+.ant-layout-sider-children {
+    overflow: 'auto';
+    height: '100vh';
+    position: 'sticky';
+    inset-inline-start: 0;
+    top: 0;
+    bottom: 0;
+    scrollbar-width: 'thin';
+    scrollbar-gutter: 'stable';
+};

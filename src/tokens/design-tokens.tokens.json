@@ -1,0 +1,32 @@
+{
+  "color": {
+    "blue": {
+      "menu": {
+        "description": "",
+        "type": "color",
+        "value": "#3058a6ff"
+      }
+    },
+    "green": {
+      "success": {
+        "description": "",
+        "type": "color",
+        "value": "#d9d9d9ff"
+      }
+    },
+    "red": {
+      "alert": {
+        "description": "",
+        "type": "color",
+        "value": "#ff6f61ff"
+      }
+    },
+    "body": {
+      "background": {
+        "description": "",
+        "type": "color",
+        "value": "#d9d9d9ff"
+      }
+    }
+  }
+}

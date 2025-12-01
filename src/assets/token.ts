@@ -1,18 +1,13 @@
-import {theme} from 'antd';
-
-export const myToken = ({primaryThemeColor}:{
+export const myToken = ({primaryThemeColor,dark}:{
     primaryThemeColor: string | undefined
-    // algorithm: Function;
+    dark: boolean
 }) => {
-    const token = theme.useToken().token;
-    console.log(token.colorBgContainer)
+
     return {
         // Seed Token
         colorPrimary: primaryThemeColor,
         borderRadius: 2,
-        algorithm: theme.compactAlgorithm,
 
         // Alias Token
-        colorBgContainer: '#f6ffed',
-      
+        colorBgContainer: dark ? '#ffffff' : '#f6ffed',
 }}

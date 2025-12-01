@@ -1,6 +1,6 @@
 import React from 'react';
 import { blue } from '@ant-design/colors';
-import { Button, Flex, Input, Space } from 'antd';
+import { Button, Flex, Input, Space, theme } from 'antd';
 
 const style1: React.CSSProperties = {
     backgroundColor: blue.primary,
@@ -9,10 +9,12 @@ const style1: React.CSSProperties = {
 };
 
 const DemoPage:React.FC = () => {
+  const token = theme.useToken().token
+  console.log(token.colorPrimary)
 
   return (
     <div>
-      <Flex vertical={false} justify='center' align='center'>
+      {/* <Flex vertical={false} justify='center' align='center'>
 
         <Flex style={style1} justify='center' align='center' >
           Ferro
@@ -22,7 +24,7 @@ const DemoPage:React.FC = () => {
           <span style={{font:'Roboto'}}>Stereo</span>
         </Flex>
 
-      </Flex>
+      </Flex> */}
       <Space>
         <Input placeholder="Please Input" />
         <Button type="primary">Submit</Button>

@@ -11,6 +11,7 @@ import { ReactQueryDevtools } from '@tanstack/react-query-devtools'; // Optional
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
+
 const queryClient = new QueryClient(
   // {
   //   defaultOptions: {
@@ -20,6 +21,7 @@ const queryClient = new QueryClient(
   //   }
   // }
 );
+
 root.render(
   <React.StrictMode>
     <BrowserRouter>
