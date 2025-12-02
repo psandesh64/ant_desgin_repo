@@ -1,10 +1,10 @@
 import { createContext } from 'react';
 
 type MyContextType = {
-	current: number;
+	isAuthenticated: boolean;
 };
 
 // Provide a safe default. Consumers should usually read from the Provider.
-const MyContext = createContext<MyContextType | undefined>({ current: 0 });
+const MyContext = createContext<MyContextType | undefined>({ isAuthenticated: false, });
 
 export default MyContext;

@@ -6,3 +6,18 @@
     // background-color: peachpuff;
     color: aqua;
 }
+.my-button {
+    color: #147c14;
+    background-color: aqua;
+}
+.container{
+    .my-button{
+        background-color: bisque;
+        font-family: "Playwrite US Trad Guides", cursive;
+        border: none;
+        border-radius: 20%;
+    }
+    .my-button:hover{
+        background-color: blue;
+    }
+}

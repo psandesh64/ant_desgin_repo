@@ -13,6 +13,7 @@ import { Layout, Menu, theme } from 'antd';
 import { Link, Route, Routes } from 'react-router-dom';
 import MyContext from './contexts/myContext';
 import DemoPage from './components/DemoPage';
+import LoginPage from './pages/LoginPage';
 
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -39,9 +40,12 @@ const App: React.FC = () => {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
   // eslint-disable-next-line
-  const [current,setCurrent] = useState(1)
+  const [isAuthenticated,setIsAuthenticated] = useState(false)
 
   return (
+    <MyContext.Provider value={{ isAuthenticated  }}      >
+
+    {isAuthenticated  ?
     <Layout hasSider>
       <Sider style={siderStyle}>
         <div className="demo-logo-vertical" />
@@ -58,22 +62,19 @@ const App: React.FC = () => {
               borderRadius: borderRadiusLG,
             }}
           >
-            <MyContext.Provider
-              value={{
-                current,
-              }}
-            >
               <Routes>
                 <Route path="demo-page" element={<DemoPage/>} />
+                
               </Routes>
-            </MyContext.Provider>
           </div>
         </Content>
         <Footer style={{ textAlign: 'center' }}>
           Ant Design ©{new Date().getFullYear()} Created by Ant UED
         </Footer>
       </Layout>
-    </Layout>
+    </Layout> : <LoginPage/>
+    }
+    </MyContext.Provider>
   );
 };
 

@@ -1,0 +1,16 @@
+.main-container {
+    min-width: min-content;
+    max-width: 455px;
+    // margin: 40px auto;
+    display: flex;
+    justify-content: center;
+}
+.sub-container {
+    display: flex;
+    justify-content: center;
+    max-height: max-content;
+}
+.login-logo {
+    display: inline-flex;
+    gap: 17.31;
+}
